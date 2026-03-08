@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "only_golf": {
+    "ecommerce-store": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/only_golf",
+            "outputPath": "dist/ecommerce-store",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
@@ -69,10 +69,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "only_golf:build:production"
+              "buildTarget": "ecommerce-store:build:production"
             },
             "development": {
-              "buildTarget": "only_golf:build:development"
+              "buildTarget": "ecommerce-store:build:development"
             }
           },
           "defaultConfiguration": "development"
