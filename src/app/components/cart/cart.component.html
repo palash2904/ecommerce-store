@@ -21,35 +21,35 @@
     <h1>Your Cart</h1>
 
     @if (items.length === 0) {
-      <section class="empty-state">
-        <p>No items in cart.</p>
-        <a routerLink="/">Browse products</a>
-      </section>
+    <section class="empty-state">
+      <p>No items in cart.</p>
+      <a routerLink="/">Browse products</a>
+    </section>
     } @else {
-      <section class="cart-list">
-        @for (item of items; track item.product.id) {
-          <article class="cart-item">
-            <img [src]="item.product.image" [alt]="item.product.name" />
-            <div class="item-main">
-              <p class="tag">{{ item.product.category }}</p>
-              <h2>{{ item.product.name }}</h2>
-              <p class="unit-price">${{ item.product.price | number : '1.2-2' }}</p>
-            </div>
-            <div class="item-actions">
-              <button (click)="decreaseQuantity(item.product.id)">-</button>
-              <span>{{ item.quantity }}</span>
-              <button (click)="increaseQuantity(item.product.id)">+</button>
-            </div>
-            <strong class="line-total">${{ item.product.price * item.quantity | number : '1.2-2' }}</strong>
-            <button class="remove" (click)="removeItem(item.product.id)">Remove</button>
-          </article>
-        }
-      </section>
+    <section class="cart-list">
+      @for (item of items; track item.product.id) {
+      <article class="cart-item">
+        <img [src]="item.product.image" [alt]="item.product.name" />
+        <div class="item-main">
+          <p class="tag">{{ item.product.category }}</p>
+          <h2>{{ item.product.name }}</h2>
+          <p class="unit-price">${{ item.product.price | number : '1.2-2' }}</p>
+        </div>
+        <div class="item-actions">
+          <button (click)="decreaseQuantity(item.product.id)">-</button>
+          <span>{{ item.quantity }}</span>
+          <button (click)="increaseQuantity(item.product.id)">+</button>
+        </div>
+        <strong class="line-total">${{ item.product.price * item.quantity | number : '1.2-2' }}</strong>
+        <button class="remove" (click)="removeItem(item.product.id)">Remove</button>
+      </article>
+      }
+    </section>
 
-      <footer class="cart-total">
-        <span>Total</span>
-        <strong>${{ subtotal | number : '1.2-2' }}</strong>
-      </footer>
+    <footer class="cart-total">
+      <span>Total</span>
+      <strong>${{ subtotal | number : '1.2-2' }}</strong>
+    </footer>
     }
   </main>
 </div>

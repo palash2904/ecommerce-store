@@ -93,7 +93,7 @@ export class MainComponent {
   constructor(
     private productDataService: ProductDataService,
     private cartService: CartService
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.productDataService.getStoreData().subscribe((data) => {
@@ -232,4 +232,6 @@ export class MainComponent {
     this.promoProducts = this.visibleProducts.slice(0, 3);
     this.sidebarProducts = this.visibleProducts.slice(0, 6);
   }
+
+
 }
