@@ -1,0 +1,78 @@
+﻿{
+  "categories": ["All", "Electronics", "Fashion", "Home", "Beauty"],
+  "products": [
+    {
+      "id": 1,
+      "name": "Pulse Wireless Headphones",
+      "category": "Electronics",
+      "price": 149.99,
+      "rating": 4.7,
+      "image": "img/products/dummy_img.svg",
+      "description": "Wireless over-ear headphones with immersive bass and 30-hour battery life."
+    },
+    {
+      "id": 2,
+      "name": "Aero Smart Watch",
+      "category": "Electronics",
+      "price": 199.0,
+      "rating": 4.6,
+      "image": "img/products/dummy_img.svg",
+      "description": "Fitness and notification smartwatch with AMOLED display and GPS."
+    },
+    {
+      "id": 3,
+      "name": "Urban Classic Backpack",
+      "category": "Fashion",
+      "price": 79.5,
+      "rating": 4.4,
+      "image": "img/products/dummy_img.svg",
+      "description": "Minimal city backpack with laptop sleeve and water-resistant fabric."
+    },
+    {
+      "id": 4,
+      "name": "Linen Lounge Chair",
+      "category": "Home",
+      "price": 249.0,
+      "rating": 4.5,
+      "image": "img/products/dummy_img.svg",
+      "description": "Contemporary lounge chair with natural wood legs and soft cushioning."
+    },
+    {
+      "id": 5,
+      "name": "Glow Vitamin C Serum",
+      "category": "Beauty",
+      "price": 39.99,
+      "rating": 4.8,
+      "image": "img/products/dummy_img.svg",
+      "description": "Daily brightening serum for clear and hydrated skin."
+    },
+    {
+      "id": 6,
+      "name": "Ceramic Brew Coffee Set",
+      "category": "Home",
+      "price": 64.0,
+      "rating": 4.3,
+      "image": "img/products/dummy_img.svg",
+      "description": "Handmade ceramic coffee set for pour-over lovers."
+    },
+    {
+      "id": 7,
+      "name": "Stride Running Shoes",
+      "category": "Fashion",
+      "price": 129.0,
+      "rating": 4.5,
+      "image": "img/products/dummy_img.svg",
+      "description": "Lightweight running shoes engineered for speed and comfort."
+    },
+    {
+      "id": 8,
+      "name": "Mini Bluetooth Speaker",
+      "category": "Electronics",
+      "price": 59.99,
+      "rating": 4.2,
+      "image": "img/products/dummy_img.svg",
+      "description": "Portable speaker with rich sound, compact size, and IPX5 resistance."
+    }
+  ]
+}
+

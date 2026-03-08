@@ -1,0 +1,55 @@
+<div class="cart-page">
+  <div class="cart-top-strip">
+    <div class="wrap">
+      <span>Secure Checkout</span>
+      <span>Fast Delivery</span>
+      <span>24/7 Support</span>
+    </div>
+  </div>
+
+  <header class="cart-header">
+    <div class="wrap">
+      <a routerLink="/" class="brand">pookie<span>.com</span></a>
+      <div class="header-actions">
+        <a routerLink="/" class="back-link">Continue Shopping</a>
+        <button class="clear-btn" (click)="clearCart()" [disabled]="items.length === 0">Clear Cart</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap cart-main">
+    <h1>Your Cart</h1>
+
+    @if (items.length === 0) {
+      <section class="empty-state">
+        <p>No items in cart.</p>
+        <a routerLink="/">Browse products</a>
+      </section>
+    } @else {
+      <section class="cart-list">
+        @for (item of items; track item.product.id) {
+          <article class="cart-item">
+            <img [src]="item.product.image" [alt]="item.product.name" />
+            <div class="item-main">
+              <p class="tag">{{ item.product.category }}</p>
+              <h2>{{ item.product.name }}</h2>
+              <p class="unit-price">${{ item.product.price | number : '1.2-2' }}</p>
+            </div>
+            <div class="item-actions">
+              <button (click)="decreaseQuantity(item.product.id)">-</button>
+              <span>{{ item.quantity }}</span>
+              <button (click)="increaseQuantity(item.product.id)">+</button>
+            </div>
+            <strong class="line-total">${{ item.product.price * item.quantity | number : '1.2-2' }}</strong>
+            <button class="remove" (click)="removeItem(item.product.id)">Remove</button>
+          </article>
+        }
+      </section>
+
+      <footer class="cart-total">
+        <span>Total</span>
+        <strong>${{ subtotal | number : '1.2-2' }}</strong>
+      </footer>
+    }
+  </main>
+</div>

@@ -1,0 +1,455 @@
+﻿<div class="page">
+  <div class="sticky-shell">
+    <div class="top-strip">
+      <div class="container top-strip-row">
+        <div class="social-icons">
+          <span>f</span>
+          <span>in</span>
+          <span>x</span>
+          <span>&#64;</span>
+        </div>
+        <div class="tiny-links">
+          <span>Introduce</span>
+          <span>Partner Incentives</span>
+          <span>Promotion</span>
+          <span>Contact</span>
+          <span>Frequently asked questions</span>
+        </div>
+      </div>
+    </div>
+
+    <header class="main-header">
+      <div class="container header-row">
+        <div class="header-spacer"></div>
+
+        <div class="search-wrap">
+          <input
+            type="text"
+            [(ngModel)]="searchTerm"
+            (input)="onSearchChange()"
+            placeholder="What are you looking for?"
+          />
+          <select [(ngModel)]="selectedCategory" (change)="selectCategory(selectedCategory)">
+            @for (category of categories; track category) {
+              <option [value]="category">{{ category }}</option>
+            }
+          </select>
+          <button (click)="onSearchChange()">Search</button>
+        </div>
+
+        <div class="header-icons">
+          <span class="icon-btn">&#9825;</span>
+          <a routerLink="/cart" class="cart-icon">&#128722;<b>{{ cartCount }}</b></a>
+        </div>
+      </div>
+    </header>
+
+    <div class="menu-strip">
+      <div class="container menu-row">
+        <span class="menu-category">&#9776; Category <small>&#9662;</small></span>
+        <span>Home</span>
+        <span>New Product <small>&#9662;</small></span>
+        <span>Promotion <b>HOT</b></span>
+        <span>Track Your Order</span>
+        <span>Sign In / Register</span>
+      </div>
+    </div>
+  </div>
+
+  <section class="mobile-home">
+    <div class="mobile-browser">
+      <div class="status">9:41 <span>&#9679; &#9679; &#9679;</span></div>
+      <div class="address-bar">AA <span>&#9679; pookie.com</span> &#8635;</div>
+      <div class="mobile-nav">
+        <button class="hamburger" (click)="toggleMobileMenu()">&#9776;</button>
+        <span>&#8981;</span>
+        <span>&#9825;</span>
+        <a routerLink="/cart" class="mobile-cart">&#128722;<b>{{ cartCount }}</b></a>
+      </div>
+      @if (mobileMenuOpen) {
+        <div class="mobile-menu-panel">
+          <a routerLink="/" (click)="closeMobileMenu()">Home</a>
+          <a routerLink="/" (click)="closeMobileMenu()">New Product</a>
+          <a routerLink="/" (click)="closeMobileMenu()">Promotion</a>
+          <a routerLink="/" (click)="closeMobileMenu()">Track Your Order</a>
+          <a routerLink="/" (click)="closeMobileMenu()">Sign In / Register</a>
+          <select [(ngModel)]="selectedCategory" (change)="selectCategory(selectedCategory)">
+            @for (category of categories; track category) {
+              <option [value]="category">{{ category }}</option>
+            }
+          </select>
+        </div>
+      }
+    </div>
+
+    <article class="m-card">
+      <div class="m-arrows">&lsaquo; &rsaquo;</div>
+      <p>Category</p>
+      <h4>TITLSUPER FASHION SALEe 1</h4>
+      <h4>BEAUTIFUL NICE</h4>
+      <button>Order Now</button>
+    </article>
+
+    <article class="m-card">
+      <p>Asus</p>
+      <h4>Supper Sale</h4>
+      <h4>Laptop Gaming</h4>
+      <button>Order Now</button>
+    </article>
+
+    <article class="m-card">
+      <p>Big deal</p>
+      <h4>Black Friday</h4>
+      <h4>Buy 1 Get 1</h4>
+    </article>
+
+    <article class="m-card">
+      <p>New product</p>
+      <h4>Opoo A42</h4>
+      <h4>Camera 24Mpx</h4>
+    </article>
+
+    <article class="m-card">
+      <p>Wine</p>
+      <h4>Drunkenness</h4>
+      <h4>Deep Flavor</h4>
+    </article>
+  </section>
+
+  <main class="container content">
+    <section class="hero-grid">
+      <article class="card left-card">
+        <p>Asus</p>
+        <h3>Supper Sale Laptop Gaming</h3>
+        <button>Order Now</button>
+      </article>
+
+      <article class="card center-card">
+        <p>New Product</p>
+        <h2>HAND WATCH ROSSINI</h2>
+        <button>Buy Now</button>
+      </article>
+
+      <article class="card right-card">
+        <p>Big Deal</p>
+        <h4>Black Friday Buy 1 Get 1</h4>
+      </article>
+
+      <article class="card mini-card"><p>Wine</p><h4>Drunkenness Deep Flavor</h4></article>
+      <article class="card mini-card"><p>Cosmetic</p><h4>MAXIMI Sale 50%</h4></article>
+      <article class="card mini-card"><p>Sunglasses</p><h4>Authentic Sale off 50%</h4></article>
+      <article class="card mini-card"><p>Hand Wash</p><h4>Clean hands Clean bacteria</h4></article>
+      <article class="card mini-card"><p>Fashion</p><h4>Nice bag Nice style</h4></article>
+    </section>
+
+    <section class="main-grid">
+      <div class="main-col">
+        <section class="category-row section-pad">
+          <div class="section-head top">
+            <h3>Shop By Categories</h3>
+            <div class="section-right">
+              <a>See All</a>
+              <button class="arrow-btn">&lsaquo;</button>
+              <button class="arrow-btn dark">&rsaquo;</button>
+            </div>
+          </div>
+          <select class="mobile-dropdown" [(ngModel)]="mobileShopCategory" (change)="onMobileShopCategoryChange()">
+            @for (tile of categoryTiles; track tile.name) {
+              <option [value]="tile.name">{{ tile.name }}</option>
+            }
+          </select>
+          <div class="tiles">
+            @for (tile of categoryTiles; track tile.name) {
+              <button
+                class="tile"
+                [class.active]="selectedShopTile === tile.name"
+                (click)="selectShopCategory(tile.name, tile.filter)"
+              >
+                <span class="tile-icon-wrap">
+                  <img [src]="tile.icon" [alt]="tile.name" class="tile-icon" />
+                </span>
+                {{ tile.name }}
+              </button>
+            }
+          </div>
+          <div class="category-product-grid">
+            @if (categoryShowcaseCards.length === 0) {
+              <p class="empty">{{ categoryEmptyMessage }}</p>
+            }
+
+            @for (card of categoryShowcaseCards; track $index) {
+              <article class="product showcase">
+                @if (card.badge) {
+                  <span class="badge" [class.yellow]="card.badge === 'Favorite' || card.badge === 'Watch a lot'" [class.orange]="card.badge === '- 15%' || card.badge === 'Deal'" [class.gray]="card.badge === 'Sold Out' || card.badge === 'Ordered'">
+                    {{ card.badge }}
+                  </span>
+                }
+                <img src="img/products/dummy_img.svg" [alt]="card.title" />
+                <h4>{{ card.title }}</h4>
+                <p class="price">{{ card.price }}</p>
+                <p class="seller">{{ card.seller }}</p>
+              </article>
+            }
+          </div>
+
+          <article class="floating-box">
+            <div class="thumb"></div>
+            <div>
+              <p class="msg">A customer has just bought</p>
+              <h4>UV Resistant Glasses - Imported</h4>
+              <p class="meta">&#9733;&#9733;&#9733;&#9733;&#9734; (13) <span>$250</span></p>
+              <p class="time">15 minutes ago: From New York</p>
+            </div>
+            <button>&times;</button>
+          </article>
+        </section>
+
+        <section class="promo-highlight section-pad">
+          <div class="promo-banners">
+            <article class="promo-banner-card">
+              <p>Hot Deal</p>
+              <h4>TOURS SAFE</h4>
+              <h4>TRUE DISCOUNT</h4>
+              <button>Order Now</button>
+            </article>
+            <article class="promo-banner-card">
+              <p>New Product</p>
+              <h4>EXPERIENCE TECHNOLOGY</h4>
+              <h4>RELAX HIGHTLY</h4>
+              <button>Order Now</button>
+            </article>
+          </div>
+
+          <div class="section-head top promo-head">
+            <h3>Promo Product</h3>
+            <div class="section-right">
+              <a>See All</a>
+              <button class="arrow-btn">&lsaquo;</button>
+              <button class="arrow-btn dark">&rsaquo;</button>
+            </div>
+          </div>
+
+          <div class="promo-split-grid">
+            @for (product of promoDisplayProducts; track product.id) {
+              <article class="promo-split-item">
+                <div class="promo-thumb-wrap">
+                  <span class="badge orange">- 15%</span>
+                  <img [src]="product.image" [alt]="product.name" />
+                </div>
+                <div class="promo-content">
+                  <h4>{{ product.name }}</h4>
+                  <p class="promo-price">${{ product.price | number : '1.2-2' }} <small>$539.06</small></p>
+                  <div class="promo-stock-row">
+                    <span>Sold: 700</span>
+                    <span>In Stock: 300</span>
+                  </div>
+                  <div class="promo-bar"><span></span></div>
+                  <div class="countdown">
+                    <span>123</span>
+                    <span>42</span>
+                    <span>00</span>
+                    <span>08</span>
+                  </div>
+                  <div class="countdown-labels">
+                    <small>Day</small>
+                    <small>Hour</small>
+                    <small>Min</small>
+                    <small>Sec</small>
+                  </div>
+                  <button (click)="addToCart(product)">Add To Cart</button>
+                </div>
+              </article>
+            }
+          </div>
+        </section>
+
+        <section class="banner">
+          <p>New Product</p>
+          <h2>FASHIONABLE WALLETS BIG GOOD SALE FOR HER</h2>
+          <button>Order Now</button>
+        </section>
+
+        <section class="product-section section-pad">
+          <div class="catalog-section">
+            <div class="section-head">
+              <h3>Technology</h3>
+              <div class="section-right tabs-line tech-tabs">
+                @for (tab of techTabs; track tab; let i = $index) {
+                  <button [class.active-tab]="i === 0">{{ tab }}</button>
+                }
+                <button class="arrow-btn">&lsaquo;</button>
+                <button class="arrow-btn dark">&rsaquo;</button>
+              </div>
+            </div>
+            <select class="mobile-dropdown" [(ngModel)]="selectedTechTab">
+              @for (tab of techTabs; track tab) {
+                <option [value]="tab">{{ tab }}</option>
+              }
+            </select>
+            <div class="tech-mosaic">
+              <article class="thumb-box"><span class="badge">New</span><img src="img/products/dummy_img.svg" alt="Product" /></article>
+              <article class="info-box"><h4>Apple Macbook Pro 2019</h4><p>MWP42SA/A</p><strong>$2,013.54</strong><small>by <span>Co., Ltd Minie Li</span></small></article>
+              <article class="thumb-box"><span class="badge yellow">Favorite</span><img src="img/products/dummy_img.svg" alt="Product" /></article>
+              <article class="info-box"><h4>Apple Watch Series 5</h4><p>MWV62VN/A</p><strong>$517.79</strong><small>by <span>247 Store</span></small></article>
+              <article class="thumb-box"><span class="badge orange">- 15%</span><img src="img/products/dummy_img.svg" alt="Product" /></article>
+              <article class="info-box"><h4>Apple Macbook Air</h4><p>MWTJ2SA/A&nbsp;&nbsp;Space Grey (2020)</p><strong>$1,099</strong><small class="old">$1193.71</small><small>by <span>Kimpine Calculator</span></small></article>
+              <article class="thumb-box"><span class="badge gray">Sold Out</span><img src="img/products/dummy_img.svg" alt="Product" /></article>
+              <article class="info-box"><h4>Apple Watch Series 5</h4><p>MWV62VN/A</p><strong>$193.31</strong><small>by <span>Kimpine Calculator</span></small></article>
+              <article class="action-box">
+                <div class="card-actions">
+                  <button>&#9825;</button>
+                  <button>&#9678;</button>
+                </div>
+                <button class="add-full" (click)="addToCart(allProducts[0])">Add To Cart</button>
+              </article>
+              <article class="info-box highlight"><h4>Logitech B175 wireless office mouse</h4><strong>$15.86</strong><small>by <span>Co., Ltd Minie Li</span></small></article>
+              <article class="thumb-box"><img src="img/products/dummy_img.svg" alt="Product" /></article>
+              <article class="info-box"><h4>Apple Macbook Pro 2019</h4><p>MWP42SA/A</p><strong>$2,013.54</strong><small>by <span>Co., Ltd Flower In</span></small></article>
+            </div>
+          </div>
+
+          <div class="catalog-section">
+            <div class="section-head">
+              <h3>Watch</h3>
+              <div class="section-right tabs-line watch-tabs">
+                @for (tab of watchTabs; track tab; let i = $index) {
+                  <button [class.active-tab]="i === 0">{{ tab }}</button>
+                }
+                <button class="arrow-btn">&lsaquo;</button>
+                <button class="arrow-btn dark">&rsaquo;</button>
+              </div>
+            </div>
+            <select class="mobile-dropdown" [(ngModel)]="selectedWatchTab">
+              @for (tab of watchTabs; track tab) {
+                <option [value]="tab">{{ tab }}</option>
+              }
+            </select>
+            <div class="catalog-grid cols-6">
+              <article class="catalog-card"><span class="badge orange">- 49%</span><img src="img/products/dummy_img.svg" alt="Watch"/><h4>Apple Watch Series 5 MWV62VN/A</h4><p class="price">$514.51</p><p class="seller">by Co., Ltd Minie Li</p></article>
+              <article class="catalog-card"><span class="badge orange">- 12%</span><img src="img/products/dummy_img.svg" alt="Watch"/><h4>Hand Watch Rossini - 1328W01A</h4><p class="price">$146.71</p><p class="seller">by Co., Ltd SMART MARKETING</p></article>
+              <article class="catalog-card"><span class="badge orange">- 5%</span><img src="img/products/dummy_img.svg" alt="Watch"/><h4>Hand Watch Rossini - 5395T01G</h4><p class="price">$183.64</p><p class="seller">by Co., Ltd Minie Li</p></article>
+              <article class="catalog-card"><span class="badge">New</span><img src="img/products/dummy_img.svg" alt="Watch"/><h4>Hand Watch Swiss Alpine Military - 32391537</h4><p class="price">$215.31</p><p class="seller">by Co., Ltd SMART MARKETING</p></article>
+              <article class="catalog-card"><span class="badge">New</span><img src="img/products/dummy_img.svg" alt="Watch"/><h4>Watch For Man Larmes LM-TF004 0T49G 211 4NB - Optimus Prime</h4><p class="price">$73.01</p><p class="seller">by Mobile World</p></article>
+              <article class="catalog-card"><img src="img/products/dummy_img.svg" alt="Watch"/><h4>Hand Watch For Man Citizen BI5000-87L</h4><p class="price">$66.79</p><p class="seller">by Co., Ltd Minie Li</p></article>
+            </div>
+          </div>
+
+                    <div class="catalog-section">
+            <div class="section-head">
+              <h3>Cosmetics</h3>
+              <div class="section-right tabs-line cosmetic-tabs">
+                @for (tab of cosmeticTabs; track tab; let i = $index) {
+                  <button [class.active-tab]="i === 0">{{ tab }}</button>
+                }
+                <button class="arrow-btn">‹</button>
+                <button class="arrow-btn dark">›</button>
+              </div>
+            </div>
+            <select class="mobile-dropdown" [(ngModel)]="selectedCosmeticTab">
+              @for (tab of cosmeticTabs; track tab) {
+                <option [value]="tab">{{ tab }}</option>
+              }
+            </select>
+            <div class="catalog-grid cols-4">
+              <article class="catalog-card"><span class="badge">New</span><img src="img/products/dummy_img.svg" alt="Cosmetics"/><h4>CIC2 Skin Decode Kit</h4><p class="price">$690.38</p><p class="seller">by Co., LTD Baby Girl</p></article>
+              <article class="catalog-card"><span class="badge yellow">Favorite</span><img src="img/products/dummy_img.svg" alt="Cosmetics"/><h4>Angel Whitening Treament Lotion</h4><p class="price">$132.90</p><p class="seller">by Co., Ltd Beautyful Face</p></article>
+              <article class="catalog-card"><span class="badge gray">Sold Out</span><img src="img/products/dummy_img.svg" alt="Cosmetics"/><h4>Sunscreen moisturizing intensify</h4><p class="price">$69.04</p><p class="seller">by Co., LTD Baby Girl</p></article>
+              <article class="catalog-card wide"><img src="img/products/dummy_img.svg" alt="Cosmetics"/><h4>Anti-allergy serum</h4><p class="price">$132.90</p><p class="seller">by Co., Ltd Byware Cosmetic</p></article>
+            </div>
+          </div>
+
+          <div class="catalog-section">
+            <div class="section-head">
+              <h3>Real Estate</h3>
+              <div class="section-right tabs-line real-estate-tabs">
+                @for (tab of realEstateTabs; track tab; let i = $index) {
+                  <button [class.active-tab]="i === 0">{{ tab }}</button>
+                }
+                <button class="arrow-btn">‹</button>
+                <button class="arrow-btn dark">›</button>
+              </div>
+            </div>
+            <select class="mobile-dropdown" [(ngModel)]="selectedRealEstateTab">
+              @for (tab of realEstateTabs; track tab) {
+                <option [value]="tab">{{ tab }}</option>
+              }
+            </select>
+            <div class="catalog-grid cols-4">
+              <article class="catalog-card wide"><span class="badge">New</span><img src="img/products/dummy_img.svg" alt="Real Estate"/><h4>Apartment for rent in GELA CENTRAL PARK 1,2,3,4 PN and LAND 72</h4><p class="price">$2500 /month</p><p class="seller">by Flower Real Estate</p></article>
+              <article class="catalog-card wide"><span class="badge yellow">Watch a lot</span><img src="img/products/dummy_img.svg" alt="Real Estate"/><h4>For Rent DALA GOLDEN RIVER (Ba Son) District 1</h4><p class="price">Price Agreement</p><p class="seller">by Vanegroup</p></article>
+              <article class="catalog-card wide"><span class="badge orange">Deal</span><img src="img/products/dummy_img.svg" alt="Real Estate"/><h4>Apartment for rent in DIAMOND</h4><p class="price">$4505 /month</p><p class="seller">by Flower Real Estate</p></article>
+              <article class="catalog-card wide"><span class="badge gray">Ordered</span><img src="img/products/dummy_img.svg" alt="Real Estate"/><h4>Apartment for rent in District 10, Ha Do CENTROSA GARDEN</h4><p class="price">$517.79 /month</p><p class="seller">by 247 REAL ESTATE</p></article>
+            </div>
+          </div>
+
+          <div class="catalog-section">
+            <div class="section-head">
+              <h3>Luxury Food</h3>
+              <div class="section-right tabs-line luxury-food-tabs">
+                @for (tab of luxuryFoodTabs; track tab; let i = $index) {
+                  <button [class.active-tab]="i === 0">{{ tab }}</button>
+                }
+                <button class="arrow-btn">‹</button>
+                <button class="arrow-btn dark">›</button>
+              </div>
+            </div>
+            <select class="mobile-dropdown" [(ngModel)]="selectedLuxuryFoodTab">
+              @for (tab of luxuryFoodTabs; track tab) {
+                <option [value]="tab">{{ tab }}</option>
+              }
+            </select>
+            <div class="catalog-grid cols-4">
+              <article class="catalog-card"><span class="badge">New</span><img src="img/products/dummy_img.svg" alt="Luxury Food"/><h4>Fujiwa alkaline ion drink 1250ml - Barrel of 12 bottles</h4><p class="price">$32</p><p class="seller">by Co., Ltd FUJIWA USA</p></article>
+              <article class="catalog-card"><span class="badge">New</span><img src="img/products/dummy_img.svg" alt="Luxury Food"/><h4>Fujiwa alkaline drinking water in 4 bottles of 5L (with faucet)</h4><p class="price">$2300</p><p class="seller">by Co., Ltd FUJIWA USA</p></article>
+              <article class="catalog-card"><img src="img/products/dummy_img.svg" alt="Luxury Food"/><h4>Pure Kinh Mon Tapioca Flour WATAPY</h4><p class="price">$58</p><p class="seller">by Gesan Investment Joint Stock Company</p></article>
+              <article class="catalog-card"><img src="img/products/dummy_img.svg" alt="Luxury Food"/><h4>Oak Wine</h4><p class="price">$517.79</p><p class="seller">by Gesan Investment Joint Stock Company</p></article>
+            </div>
+          </div>
+        </section>
+
+        <section class="service-row">
+          <article>
+            <h4>Free Shipping</h4>
+            <p>For invoices over $1,500</p>
+          </article>
+          <article>
+            <h4>Cash Back</h4>
+            <p>When paying for products via wallet</p>
+          </article>
+          <article>
+            <h4>24/7 Support</h4>
+            <p>When something goes wrong</p>
+          </article>
+        </section>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container foot-grid">
+      <div>
+        <h4>Contact</h4>
+        <p>fribe Co., Ltd</p>
+        <p>1658 Rosewood Lane New York city, NY</p>
+        <p class="green">212 929 9953</p>
+        <p class="green">admin&#64;fribe.com</p>
+      </div>
+      <div>
+        <h4>Cooperation - Association</h4>
+        <p>Operation Regulation of EC-Exchange</p>
+        <p>Return Policy</p>
+        <p>Privacy Policy</p>
+      </div>
+      <div>
+        <h4>Customer Support</h4>
+        <p>Hotline Customer Service</p>
+        <p class="green">212 929 9953</p>
+        <p>Frequently asked Questions</p>
+        <p>Ordering Guide</p>
+      </div>
+    </div>
+  </footer>
+</div>
+
+
+
