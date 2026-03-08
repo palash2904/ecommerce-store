@@ -1282,3 +1282,33 @@
         display: none
     }
 }
+
+.mobile-search-wrap {
+    display: none
+}
+
+@media (max-width:640px) {
+    .mobile-search-wrap {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 8px;
+        padding: 10px
+    }
+
+    .mobile-search-wrap input,
+    .mobile-search-wrap select {
+        border: 1px solid #e1e1e1;
+        border-radius: 4px;
+        padding: 10px;
+        font-size: 13px
+    }
+
+    .mobile-search-wrap button {
+        border: none;
+        background: #61c63f;
+        color: #fff;
+        border-radius: 4px;
+        padding: 10px 12px;
+        font-size: 12px
+    }
+}
