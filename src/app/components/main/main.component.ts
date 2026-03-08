@@ -2,6 +2,7 @@ import { DecimalPipe } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
+import { NzMessageService } from 'ng-zorro-antd/message';
 import { Product } from '../../models/store.models';
 import { CartService } from '../../services/cart.service';
 import { ProductDataService } from '../../services/product-data.service';
@@ -92,7 +93,8 @@ export class MainComponent {
 
   constructor(
     private productDataService: ProductDataService,
-    private cartService: CartService
+    private cartService: CartService,
+    private toastr: NzMessageService
   ) { }
 
   ngOnInit(): void {
@@ -138,7 +140,13 @@ export class MainComponent {
   }
 
   addToCart(product: Product): void {
+    if (!product) {
+      this.toastr.warning('Product is not available right now.');
+      return;
+    }
+
     this.cartService.addToCart(product);
+    this.toastr.success(`${product.name} added to cart`);
   }
 
   toggleMobileMenu(): void {
