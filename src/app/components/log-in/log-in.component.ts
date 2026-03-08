@@ -5,7 +5,6 @@ import { ValidationErrorService } from '../../services/validation-error.service'
 import { CommonModule } from '@angular/common';
 import { NzSelectModule } from 'ng-zorro-antd/select';
 import { NzMessageService } from 'ng-zorro-antd/message';
-import { QuillModule } from 'ngx-quill';
 @Component({
   selector: 'app-log-in',
   imports: [],
